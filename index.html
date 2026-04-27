@@ -368,7 +368,7 @@ tbody tr:hover td{background:#fafbff}
       </div>
       <div class="form-group">
         <label class="form-label">Numéro</label>
-        <input class="form-input form-readonly" id="dm-num" readonly>
+        <input class="form-input" id="dm-num" placeholder="Ex: 2026-FAC-0001">
       </div>
       <div class="form-group">
         <label class="form-label">Client</label>
@@ -761,8 +761,8 @@ function saveClient(){
 function openDocModal(type='facture', id=null){
   editDocId=id;
   itemsList=[];
-  const sel=document.getElementById('dm-client');
-  sel.innerHTML=clients.map(c=>`<option value="${c.id}">${c.name} (${c.id})</option>`).join('');
+  // Remplir la datalist — input reste libre
+  document.getElementById('dm-client-list').innerHTML=clients.map(c=>`<option value="${c.id}">${c.name} — ${c.id}</option>`).join('');
   if(id){
     const d=docs.find(x=>x.id===id);
     document.getElementById('dm-type').value=d.type;
